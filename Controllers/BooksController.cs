@@ -11,7 +11,6 @@ namespace BookApi.Controllers;
 public class BooksController : ControllerBase
 {
     private readonly IBookService _service;
-
     public BooksController(IBookService service)
     {
         _service = service;

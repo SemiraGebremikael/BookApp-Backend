@@ -20,7 +20,6 @@ public class AuthController : ControllerBase
         RegisterDto dto)
     {
         await _service.RegisterAsync(dto);
-
         return Ok();
     }
 
