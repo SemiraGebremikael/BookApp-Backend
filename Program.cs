@@ -123,6 +123,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapGet("/", () => "API is running");
+app.MapGet("/", () => "API WORKS");
 
 app.Run();
