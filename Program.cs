@@ -54,10 +54,10 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 
-//builder.Services.AddDbContext<AppDbContext>(options =>
-//    options.UseNpgsql(
-//        builder.Configuration.GetConnectionString(
-//            "DefaultConnection")));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString(
+            "DefaultConnection")));
 
 
 builder.Services.AddAuthentication(
@@ -123,6 +123,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapGet("/", () => "API WORKS");
 
+
+app.MapGet("/", () => "HELLO FROM AZURE");
+
+app.Run();
 app.Run();
