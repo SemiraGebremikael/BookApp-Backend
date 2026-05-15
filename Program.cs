@@ -96,6 +96,7 @@ builder.Services.AddCors(options =>
         });
 });
 
+
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IQuoteRepository, QuoteRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -105,12 +106,21 @@ builder.Services.AddScoped<IQuoteService, QuoteService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
-app.UseSwagger();
-app.UseSwaggerUI();
-app.UseCors("AllowAngular");
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Clear();
+app.Urls.Add($"http://0.0.0.0:{port}");
+
+app.UseHttpsRedirection();
+
+app.UseCors("AllowAngular");
 
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.Run();
