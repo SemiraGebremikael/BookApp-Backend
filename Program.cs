@@ -107,6 +107,9 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Clear();
+app.Urls.Add($"http://0.0.0.0:{port}");
 
 app.UseHttpsRedirection();
 
