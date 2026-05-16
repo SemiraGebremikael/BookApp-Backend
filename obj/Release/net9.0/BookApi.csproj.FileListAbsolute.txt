@@ -158,3 +158,9 @@ C:\Users\semir\source\repos\BookApp\backend\obj\Release\net9.0\refint\BookApi.dl
 C:\Users\semir\source\repos\BookApp\backend\obj\Release\net9.0\BookApi.pdb
 C:\Users\semir\source\repos\BookApp\backend\obj\Release\net9.0\BookApi.genruntimeconfig.cache
 C:\Users\semir\source\repos\BookApp\backend\obj\Release\net9.0\ref\BookApi.dll
+C:\Users\semir\source\repos\BookApp\backend\bin\Release\net9.0\publish\web.config
+C:\Users\semir\source\repos\BookApp\backend\bin\Release\net9.0\publish\appsettings.Development.json
+C:\Users\semir\source\repos\BookApp\backend\bin\Release\net9.0\publish\appsettings.json
+C:\Users\semir\source\repos\BookApp\backend\bin\Release\net9.0\publish\BookApi.deps.json
+C:\Users\semir\source\repos\BookApp\backend\bin\Release\net9.0\publish\BookApi.runtimeconfig.json
+C:\Users\semir\source\repos\BookApp\backend\bin\Release\net9.0\publish\BookApi.staticwebassets.endpoints.json

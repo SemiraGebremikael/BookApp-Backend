@@ -1,6 +1,12 @@
 C:\Users\semir\source\repos\BookApp\backend\publish\BookApi.exe
+C:\Users\semir\source\repos\BookApp\backend\publish\publish\web.config
 C:\Users\semir\source\repos\BookApp\backend\publish\appsettings.Development.json
 C:\Users\semir\source\repos\BookApp\backend\publish\appsettings.json
+C:\Users\semir\source\repos\BookApp\backend\publish\publish\appsettings.Development.json
+C:\Users\semir\source\repos\BookApp\backend\publish\publish\appsettings.json
+C:\Users\semir\source\repos\BookApp\backend\publish\publish\BookApi.deps.json
+C:\Users\semir\source\repos\BookApp\backend\publish\publish\BookApi.runtimeconfig.json
+C:\Users\semir\source\repos\BookApp\backend\publish\publish\BookApi.staticwebassets.endpoints.json
 C:\Users\semir\source\repos\BookApp\backend\publish\BookApi.dll
 C:\Users\semir\source\repos\BookApp\backend\publish\BookApi.runtimeconfig.json
 C:\Users\semir\source\repos\BookApp\backend\publish\BookApi.pdb
