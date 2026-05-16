@@ -123,5 +123,4 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapGet("/", () => "HELLO FROM AZURE");
 app.Run();
