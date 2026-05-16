@@ -502,3 +502,9 @@ C:\Users\semir\source\repos\BookApp\backend\bin\Debug\net9.0\publish\appsettings
 C:\Users\semir\source\repos\BookApp\backend\bin\Debug\net9.0\publish\BookApi.deps.json
 C:\Users\semir\source\repos\BookApp\backend\bin\Debug\net9.0\publish\BookApi.runtimeconfig.json
 C:\Users\semir\source\repos\BookApp\backend\bin\Debug\net9.0\publish\BookApi.staticwebassets.endpoints.json
+C:\Users\semir\source\repos\BookApp\backend\bin\Debug\net9.0\publish\publish\web.config
+C:\Users\semir\source\repos\BookApp\backend\bin\Debug\net9.0\publish\publish\appsettings.Development.json
+C:\Users\semir\source\repos\BookApp\backend\bin\Debug\net9.0\publish\publish\appsettings.json
+C:\Users\semir\source\repos\BookApp\backend\bin\Debug\net9.0\publish\publish\BookApi.deps.json
+C:\Users\semir\source\repos\BookApp\backend\bin\Debug\net9.0\publish\publish\BookApi.runtimeconfig.json
+C:\Users\semir\source\repos\BookApp\backend\bin\Debug\net9.0\publish\publish\BookApi.staticwebassets.endpoints.json
