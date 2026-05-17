@@ -2,74 +2,138 @@
 using BookApi.Models;
 using BookApi.Repositories.Interfaces;
 using BookApi.Services.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace BookApi.Services;
 
 public class QuoteService : IQuoteService
 {
     private readonly IQuoteRepository _repository;
+    private readonly ILogger<QuoteService> _logger;
 
-    public QuoteService(IQuoteRepository repository)
+    public QuoteService(
+        IQuoteRepository repository,
+        ILogger<QuoteService> logger)
     {
         _repository = repository;
+        _logger = logger;
     }
 
     public async Task<List<Quote>> GetAllAsync()
     {
+        _logger.LogInformation("Fetching all quotes");
+
         var quotes = await _repository.GetAllAsync();
 
         if (quotes.Count == 0)
         {
-            foreach (var text in SeedQuotes.Quotes)
-            {
-                await _repository.AddAsync(new Quote { Text = text });
-            }
+            _logger.LogWarning("No quotes found - seeding default quotes");
 
-            await _repository.SaveChangesAsync();
-            quotes = await _repository.GetAllAsync();
+            try
+            {
+                foreach (var text in SeedQuotes.Quotes)
+                {
+                    await _repository.AddAsync(new Quote { Text = text });
+                }
+
+                await _repository.SaveChangesAsync();
+
+                quotes = await _repository.GetAllAsync();
+
+                _logger.LogInformation("Seed completed. Total quotes: {Count}", quotes.Count);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while seeding quotes");
+                throw;
+            }
         }
+
+        _logger.LogInformation("Returned {Count} quotes", quotes.Count);
 
         return quotes;
     }
 
     public async Task<Quote> CreateAsync(CreateQuoteDto dto)
     {
-        var quote = new Quote
+        try
         {
-            Text = dto.Text
-        };
+            _logger.LogInformation("Creating quote: {Text}", dto.Text);
 
-        await _repository.AddAsync(quote);
+            var quote = new Quote
+            {
+                Text = dto.Text
+            };
 
-        await _repository.SaveChangesAsync();
+            await _repository.AddAsync(quote);
+            await _repository.SaveChangesAsync();
 
-        return quote;
+            _logger.LogInformation("Quote created with ID: {Id}", quote.Id);
+
+            return quote;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error creating quote");
+            throw;
+        }
     }
 
     public async Task<Quote?> UpdateAsync(int id, UpdateQuoteDto dto)
     {
-        var quote = await _repository.GetByIdAsync(id);
-        if (quote == null) return null;
+        try
+        {
+            _logger.LogInformation("Updating quote ID: {Id}", id);
 
-        quote.Text = dto.Text;
+            var quote = await _repository.GetByIdAsync(id);
 
-        await _repository.UpdateAsync(quote);
-        await _repository.SaveChangesAsync();
+            if (quote == null)
+            {
+                _logger.LogWarning("Quote not found: {Id}", id);
+                return null;
+            }
 
-        return quote;
+            quote.Text = dto.Text;
+
+            await _repository.UpdateAsync(quote);
+            await _repository.SaveChangesAsync();
+
+            _logger.LogInformation("Quote updated successfully: {Id}", id);
+
+            return quote;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error updating quote: {Id}", id);
+            throw;
+        }
     }
 
     public async Task<bool> DeleteAsync(int id)
     {
-        var quote = await _repository.GetByIdAsync(id);
+        try
+        {
+            _logger.LogInformation("Deleting quote ID: {Id}", id);
 
-        if (quote == null) return false;
+            var quote = await _repository.GetByIdAsync(id);
 
-        await _repository.DeleteAsync(quote);
+            if (quote == null)
+            {
+                _logger.LogWarning("Delete failed - quote not found: {Id}", id);
+                return false;
+            }
 
-        await _repository.SaveChangesAsync();
+            await _repository.DeleteAsync(quote);
+            await _repository.SaveChangesAsync();
 
-        return true;
+            _logger.LogInformation("Quote deleted successfully: {Id}", id);
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error deleting quote: {Id}", id);
+            throw;
+        }
     }
 }
-
