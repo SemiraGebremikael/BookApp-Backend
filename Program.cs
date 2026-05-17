@@ -53,6 +53,7 @@ builder.Services.AddSwaggerGen(options =>
         });
 });
 
+builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(
