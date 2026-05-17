@@ -16,11 +16,17 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register(
-        RegisterDto dto)
+    public async Task<IActionResult> Register(RegisterDto dto)
     {
-        await _service.RegisterAsync(dto);
-        return Ok();
+        try
+        {
+            await _service.RegisterAsync(dto);
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.ToString());
+        }
     }
 
     [HttpPost("login")]
