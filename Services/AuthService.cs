@@ -24,16 +24,25 @@ public class AuthService : IAuthService
 
     public async Task RegisterAsync(RegisterDto dto)
     {
-        var user = new User
+
+        try
         {
-            Name = dto.Name,
-            Password =
-                BCrypt.Net.BCrypt.HashPassword(dto.Password)
-        };
+            var user = new User
+            {
+                Name = dto.Name,
+                Password =
+               BCrypt.Net.BCrypt.HashPassword(dto.Password)
+            };
 
-        await _repository.AddAsync(user);
+            await _repository.AddAsync(user);
 
-        await _repository.SaveChangesAsync();
+            await _repository.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("REGISTER FAILED: " + ex.ToString());
+        }
+
     }
 
     public async Task<string?> LoginAsync(LoginDto dto)
