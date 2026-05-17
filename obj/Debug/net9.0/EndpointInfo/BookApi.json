@@ -67,25 +67,6 @@
         }
       }
     },
-    "/": {
-      "get": {
-        "tags": [
-          "BookApi"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/Books": {
       "get": {
         "tags": [
