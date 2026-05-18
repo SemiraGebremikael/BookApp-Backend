@@ -507,3 +507,4 @@ C:\Users\semir\source\repos\BookApp\backend\obj\Debug\net9.0\refint\BookApi.dll
 C:\Users\semir\source\repos\BookApp\backend\obj\Debug\net9.0\BookApi.pdb
 C:\Users\semir\source\repos\BookApp\backend\obj\Debug\net9.0\BookApi.genruntimeconfig.cache
 C:\Users\semir\source\repos\BookApp\backend\obj\Debug\net9.0\ref\BookApi.dll
+C:\Users\semir\source\repos\BookApp\backend\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
